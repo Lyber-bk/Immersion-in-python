@@ -24,6 +24,7 @@ import csv
 import json
 import random
 
+
 def save_to_json(func):
     def wrapper(*args):
         result_list = []
@@ -36,7 +37,9 @@ def save_to_json(func):
                 result_list.append(data)
         with open('results.json', 'w') as f:
             json.dump(result_list, f)
+
     return wrapper
+
 
 @save_to_json
 def find_roots(a, b, c):
@@ -50,12 +53,14 @@ def find_roots(a, b, c):
         x2 = (-b - d ** 0.5) / (2 * a)
         return x1, x2
 
+
 def generate_csv_file(file_name, rows):
     with open(file_name, 'w', newline='') as f:
         writer = csv.writer(f)
         for i in range(rows):
             row = [random.randint(1, 1000) for _ in range(3)]
             writer.writerow(row)
+
 
 '''
 Из созданных на уроке и в рамках домашнего задания функций, соберите пакет для работы с файлами.
